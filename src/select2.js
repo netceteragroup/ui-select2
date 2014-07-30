@@ -35,8 +35,8 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
         var opts = angular.extend({}, options, scope.$eval(attrs.uiSelect2));
 
         /*
-        Convert from Select2 view-model to Angular view-model.
-        */
+         Convert from Select2 view-model to Angular view-model.
+         */
         var convertToAngularModel = function(select2_data) {
           var model;
           if (opts.simple_tags) {
@@ -51,8 +51,8 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
         };
 
         /*
-        Convert from Angular view-model to Select2 view-model.
-        */
+         Convert from Angular view-model to Select2 view-model.
+         */
         var convertToSelect2Model = function(angular_data) {
           var model = [];
           if (!angular_data) {
@@ -82,7 +82,7 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
 
         if (controller) {
           // Watch the model for programmatic changes
-           scope.$watch(tAttrs.ngModel, function(current, old) {
+          scope.$watch(tAttrs.ngModel, function(current, old) {
             if (!current) {
               return;
             }
@@ -124,7 +124,7 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
               $timeout(function () {
                 elm.select2('val', controller.$viewValue);
                 // Refresh angular to remove the superfluous option
-                elm.trigger('change');
+                controller.$render();
                 if(newVal && !oldVal && controller.$setPristine) {
                   controller.$setPristine(true);
                 }
@@ -149,7 +149,7 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
             // Set the view and model value and update the angular template manually for the ajax/multiple select2.
             elm.bind("change", function (e) {
               e.stopImmediatePropagation();
-              
+
               if (scope.$$phase || scope.$root.$$phase) {
                 return;
               }
@@ -207,6 +207,7 @@ angular.module('ui.select2', []).value('uiSelect2Config', {}).directive('uiSelec
           // Not sure if I should just check for !isSelect OR if I should check for 'tags' key
           if (!opts.initSelection && !isSelect) {
             var isPristine = controller.$pristine;
+            controller.$pristine = false;
             controller.$setViewValue(
               convertToAngularModel(elm.select2('data'))
             );

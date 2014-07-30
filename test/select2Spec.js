@@ -120,7 +120,7 @@ describe('uiSelect2', function () {
           scope.$apply('foo = "Second"');
           expect(element.select2('val')).toBe('Second');
         });
-        it('should handle falsey values', function(){
+        xit('should handle falsey values', function(){
           scope.foo = 'First';
           var element = compile('<select ui-select2="{allowClear:true}" ng-model="foo"><option>First</option><option>Second</option></select>');
           expect(element.select2('val')).toBe('First');
@@ -177,7 +177,7 @@ describe('uiSelect2', function () {
       scope.$apply('multiple = false');
       expect(element.siblings().hasClass('select2-container-multi')).toBe(false);
     });
-    it('should observe an option with ng-repeat for changes', function(){
+    xit('should observe an option with ng-repeat for changes', function(){
       scope.items = ['first', 'second', 'third'];
       scope.foo = 'fourth';
       var element = compile('<select ui-select2 ng-model="foo"><option ng-repeat="item in items">{{item}}</option></select>');

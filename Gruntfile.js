@@ -34,10 +34,17 @@ module.exports = function (grunt) {
         background: true
       }
     },
+    uglify: {
+      minify_select2: {
+        files: {
+          'src/select2.min.js': 'src/select2.js'
+        }
+      }
+    },
     jshint: {
       all:[
         'gruntFile.js',
-        'src/**/*.js',
+        'src/select2.js',
         'test/**/*Spec.js'
       ],
       options: {
@@ -52,7 +59,7 @@ module.exports = function (grunt) {
   };
 
   // Register tasks
-  grunt.registerTask('default', ['jshint', 'karma:unit']);
+  grunt.registerTask('default', ['jshint', 'karma:unit', 'uglify']);
   grunt.registerTask('watch', ['jshint', 'karma:watch']);
 
   grunt.initConfig(initConfig);
