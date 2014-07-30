@@ -2,6 +2,9 @@ ui-select2   [![Build Status](https://travis-ci.org/angular-ui/ui-select2.png)](
 ==========
 This directive allows you to enhance your select elements with behaviour from the [select2](http://ivaynberg.github.io/select2/) library.
 
+**Note**
+This release (v0.0.5-nca) contains a fix for [issue#151](https://github.com/angular-ui/ui-select2/issues/151) posted [here](https://github.com/angular-ui/ui-select2/issues/151#issuecomment-43136387), a minified version of angular-ui-select2, select2 (v3.4.8) and jQuery (v2.1.1).
+
 # Requirements
 
 - [AngularJS](http://angularjs.org/)
